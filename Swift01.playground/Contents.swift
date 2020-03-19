@@ -82,3 +82,15 @@ if temperature <= 0 {
     print("normal")
 }
 
+let possibleNumber = "123"
+let convertedNumber = Int(possibleNumber)
+if convertedNumber != nil {
+    print("converted number include some value - \(String(describing: convertedNumber!))")
+} else {
+    print("converted number include nil")
+}
+if let actualNumber = convertedNumber {
+    print("converted number include some value - \(actualNumber)")
+} else {
+    print("converted number include nil")
+}
