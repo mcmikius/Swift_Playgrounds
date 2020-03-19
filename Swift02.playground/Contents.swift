@@ -23,3 +23,24 @@ if emptyString == "" {
 if emptyString.isEmpty {
     print("empty")
 }
+
+for character in "Fuck you! 🖕" {
+    print(character)
+}
+
+let exclamationMark: Character = "!"
+
+let carCharacters: [Character] = ["C", "a", "t", "!"]
+let carString = String(carCharacters)
+
+let stringOne = "Hello"
+let stringTwo = " World!"
+print(stringOne + stringTwo)
+var welcome = stringOne + stringTwo
+welcome += "!"
+print(welcome)
+
+welcome.append(exclamationMark)
+let multiplier = 3
+let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
+print(message)
