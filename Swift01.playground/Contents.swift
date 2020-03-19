@@ -140,3 +140,24 @@ userDefinedColor = "black"
 var colorToUse = userDefinedColor ?? defaultColor
 print(colorToUse)
 
+let allowedEntry = false
+if !allowedEntry {
+    print("Canceled")
+}
+
+let enteredDoorCode = true
+let passedRetinaScan = false
+if enteredDoorCode && passedRetinaScan {
+    print("Welcome")
+} else {
+    print("Denied")
+}
+
+let hasDoorKey = false
+let adminPassword = true
+
+if hasDoorKey || adminPassword {
+    print("Welcome")
+} else {
+    print("Denied")
+}
