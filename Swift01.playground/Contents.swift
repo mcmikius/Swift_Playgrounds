@@ -106,3 +106,8 @@ let forcedString: String = possibleString!
 let assumedString: String!
 assumedString = "Implecity string"
 let implecityString: String = assumedString
+
+let i = 9 % 4
+
+let newValue = true ? 1 : 0
+print(newValue)
