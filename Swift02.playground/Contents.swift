@@ -100,3 +100,4 @@ for scalar in dogString.unicodeScalars {
     print("\(scalar.value)", terminator: " ")
 }
 print()
+
