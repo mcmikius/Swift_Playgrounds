@@ -52,3 +52,10 @@ let three = 3
 let pointOneFourOneFive = 0.14159
 let numberPi = Double(three) + pointOneFourOneFive
 
+typealias AudioSample = UInt16
+
+let maxValue = AudioSample.max
+
+let isHide = true
+
+
