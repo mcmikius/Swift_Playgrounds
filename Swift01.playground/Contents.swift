@@ -73,3 +73,12 @@ let http200Status = (statusCode: 200, description: "Ok")
 print("Status code: \(http200Status.statusCode)")
 print("Message: \(http200Status.description)")
 
+var temperature = -1
+if temperature <= 0 {
+    print("very cold")
+} else if temperature >= 30 {
+    print("very hot")
+} else {
+    print("normal")
+}
+
