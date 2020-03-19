@@ -41,3 +41,14 @@ let expDouble = 1.21875e1
 let hexDouble = 0xC.3p0
 
 let oneMillion = 1_000_000
+
+//let cannotBeNegative: UInt8 = -1
+//let tooBig: Int8 = Int8.max + 1
+let twoThousand: UInt16 = 2000
+let one: UInt8 = 1
+let twoThousandOne = twoThousand + UInt16(one)
+
+let three = 3
+let pointOneFourOneFive = 0.14159
+let numberPi = Double(three) + pointOneFourOneFive
+
