@@ -55,3 +55,19 @@ if favoriteGenres.contains("Funk") {
 for genre in favoriteGenres.sorted() {
     print(genre)
 }
+
+let oddDigits: Set = [1, 3, 5, 7, 9]
+let singlePrimeDigits: Set = [2, 3, 5, 7]
+
+oddDigits.intersection(singlePrimeDigits).sorted()
+oddDigits.symmetricDifference(singlePrimeDigits).sorted()
+oddDigits.union(singlePrimeDigits).sorted()
+oddDigits.subtracting(singlePrimeDigits).sorted()
+
+let houseAnimals: Set = ["🐱", "🐶"]
+let farmAnimals: Set = ["🐮", "🐱", "🐶", "🐔"]
+let cityAnimals: Set = ["🐰", "🐹"]
+houseAnimals.isSubset(of: farmAnimals)
+farmAnimals.isSuperset(of: houseAnimals)
+farmAnimals.isDisjoint(with: cityAnimals)
+
