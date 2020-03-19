@@ -111,3 +111,32 @@ let i = 9 % 4
 
 let newValue = true ? 1 : 0
 print(newValue)
+
+let four = 4
+let minusFour = -four
+var a = 1
+a += 2
+let x = 1
+let y = 2
+x == y
+x != y
+x > y
+x < y
+x >= y
+x <= y
+
+(2, "zebra") < (2, "apple")
+
+let R = 4
+if (R % 2) == 0 {
+    print("even")
+} else {
+    print("uneven")
+}
+
+let defaultColor = "red"
+var userDefinedColor: String?
+userDefinedColor = "black"
+var colorToUse = userDefinedColor ?? defaultColor
+print(colorToUse)
+
