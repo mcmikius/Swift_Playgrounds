@@ -94,3 +94,15 @@ if let actualNumber = convertedNumber {
 } else {
     print("converted number include nil")
 }
+
+
+if let firstNumber = Int("4"), let secontNumber = Int("42"), firstNumber < secontNumber && secontNumber < 100 {
+    print("\(firstNumber) < \(secontNumber) < 100")
+}
+
+let possibleString: String? = "Optional string"
+let forcedString: String = possibleString!
+
+let assumedString: String!
+assumedString = "Implecity string"
+let implecityString: String = assumedString
