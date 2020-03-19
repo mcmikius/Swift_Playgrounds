@@ -71,3 +71,34 @@ houseAnimals.isSubset(of: farmAnimals)
 farmAnimals.isSuperset(of: houseAnimals)
 farmAnimals.isDisjoint(with: cityAnimals)
 
+var namesOfIntegers = [Int: String]()
+namesOfIntegers[16] = "sixteen"
+namesOfIntegers.count
+namesOfIntegers[16]
+var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
+airports.isEmpty
+airports["LHR"] = "London"
+airports["LHR"] = "London Heathrow"
+if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
+    print("Old value \(oldValue)")
+}
+if let airportName = airports["DUB"] {
+    print("Name \(airportName)")
+} else {
+    print("Not value")
+}
+
+for (airportCode, airportName) in airports {
+    print("\(airportCode): \(airportName)")
+}
+
+for airportCode in airports.keys {
+    print("\(airportCode)")
+}
+
+for airportName in airports.values {
+    print("\(airportName)")
+}
+
+let airportCodes = [String](airports.keys)
+let airportNames = [String](airports.values)
