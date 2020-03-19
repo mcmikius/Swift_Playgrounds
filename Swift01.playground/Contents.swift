@@ -26,3 +26,18 @@ let maxValueInt8 = Int8.max
 let minValueInt64 = Int64.min
 let maxValueInt64 = Int64.max
 
+let meaningOfLife = 42
+let pi = 3.1459
+
+let anotherPi = 3 + 0.1459
+
+let decimalInt = 17
+let binaryInt = 0b10001
+let octaInt = 0o21
+let hexInt = 0x11
+
+let decimalDouble = 12.1875
+let expDouble = 1.21875e1
+let hexDouble = 0xC.3p0
+
+let oneMillion = 1_000_000
