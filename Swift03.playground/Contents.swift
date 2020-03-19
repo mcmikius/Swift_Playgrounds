@@ -31,3 +31,27 @@ for item in shopingList {
 for (index, value) in shopingList.enumerated() {
     print("\(index + 1). \(value)")
 }
+var favoriteGenres: Set<String> = ["Rock", "Classical"]
+favoriteGenres.insert("Hip hop")
+favoriteGenres.count
+
+favoriteGenres.isEmpty
+favoriteGenres.insert("Jazz")
+if let removedGenre = favoriteGenres.remove("Rock") {
+    print("Deleted \(removedGenre)")
+} else {
+    print("Element is not exist")
+}
+favoriteGenres.insert("Rock")
+for genre in favoriteGenres {
+    print(genre)
+}
+if favoriteGenres.contains("Funk") {
+    print("Exist")
+} else {
+    print("Not exist")
+}
+
+for genre in favoriteGenres.sorted() {
+    print(genre)
+}
