@@ -68,3 +68,19 @@ welcomeMessage.removeSubrange(range)
 let greetingTwo = "Hello, world!"
 let ind = greetingTwo.firstIndex(of: ",") ?? greetingTwo.endIndex
 let beginning = greetingTwo[..<ind]
+
+let quoatation = "are we equale?"
+let someQuoatation = "are we equale?"
+if quoatation == someQuoatation {
+    print("is equale")
+} else {
+    print("is not equale")
+}
+let scennesPiece = ["Act 1 Scene 1", "Act 1 Scene 2", "Act 1 Scene 3", "Act 1 Scene 4", "Act 1 Scene 5", "Act 2 Scene 1", "Act 2 Scene 2", "Act 2 Scene 3", "Act 2 Scene 4", "Act 2 Scene 5", "Act 2 Scene 6"]
+var actOneSceneCount = 0
+for scene in scennesPiece {
+    if scene.hasPrefix("Act 1") {
+        actOneSceneCount += 1
+    }
+}
+print("Total \(actOneSceneCount)")
