@@ -58,4 +58,18 @@ let maxValue = AudioSample.max
 
 let isHide = true
 
+let http404Error = (404, "Not Found")
+let (statusCode, statusMessage) = http404Error
+print("Status code: \(statusCode)")
+print("Message: \(statusMessage)")
+
+let (justStatusCode, _) = http404Error
+print("Status code: \(justStatusCode)")
+
+print("Status code: \(http404Error.0)")
+print("Message: \(http404Error.1)")
+
+let http200Status = (statusCode: 200, description: "Ok")
+print("Status code: \(http200Status.statusCode)")
+print("Message: \(http200Status.description)")
 
