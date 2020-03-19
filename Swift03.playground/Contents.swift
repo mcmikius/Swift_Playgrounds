@@ -25,3 +25,9 @@ shopingList
 let sirop = shopingList.remove(at: 0)
 let apples = shopingList.removeLast()
 shopingList
+for item in shopingList {
+    print(item)
+}
+for (index, value) in shopingList.enumerated() {
+    print("\(index + 1). \(value)")
+}
