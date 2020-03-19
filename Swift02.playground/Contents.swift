@@ -44,3 +44,27 @@ welcome.append(exclamationMark)
 let multiplier = 3
 let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 print(message)
+
+let greeting = "Guten Tag!"
+greeting[greeting.startIndex]
+greeting[greeting.index(before: greeting.endIndex)]
+greeting[greeting.index(after: greeting.startIndex)]
+let index = greeting.index(greeting.startIndex, offsetBy: 7)
+greeting[index]
+
+for index in greeting.indices {
+    print(greeting[index], terminator: " ")
+}
+
+var welcomeMessage = "hello"
+welcomeMessage.insert("!", at: welcomeMessage.endIndex)
+welcomeMessage.insert(contentsOf: " there", at: welcomeMessage.index(before: welcomeMessage.endIndex))
+
+welcomeMessage.remove(at: welcomeMessage.index(before: welcomeMessage.endIndex))
+
+let range = welcomeMessage.index(welcomeMessage.endIndex, offsetBy: -6)..<welcomeMessage.endIndex
+welcomeMessage.removeSubrange(range)
+
+let greetingTwo = "Hello, world!"
+let ind = greetingTwo.firstIndex(of: ",") ?? greetingTwo.endIndex
+let beginning = greetingTwo[..<ind]
