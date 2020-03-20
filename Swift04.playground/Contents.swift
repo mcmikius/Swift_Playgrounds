@@ -116,3 +116,23 @@ case (-2...2, -2...2):
 default:
     print("\(somePoint) - inout area")
 }
+
+let anotherPoint = (2, 0)
+switch anotherPoint {
+case (let x, 0):
+    print("On X x value = \(x)")
+case (0, let y):
+    print("On Y y value = \(y)")
+case let (x, y):
+    print("x value = \(x) y value = \(y)")
+}
+
+let yetAnotherPoint = (1, -1)
+switch yetAnotherPoint {
+case let (x, y) where x == y:
+    print("\(x), \(y) on line x = y")
+case let (x, y) where x == -y:
+    print("\(x), \(y) on line x = -y")
+case let (x, y):
+    print("x value = \(x) y value = \(y)")
+}
