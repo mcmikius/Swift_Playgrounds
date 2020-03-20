@@ -22,3 +22,23 @@ for char in puzzleInput {
     puzzleOutput.append(char)
 }
 print(puzzleOutput)
+
+let numberSymbol: Character = "5"
+var possibleInt: Int?
+switch numberSymbol {
+case "1":
+    possibleInt = 1
+case "2":
+    possibleInt = 2
+case "3":
+    possibleInt = 3
+case "4":
+    possibleInt = 4
+default:
+    break
+}
+if let intValue = possibleInt {
+    print("Integer value of \(numberSymbol) is \(intValue)")
+} else {
+    print("Integer value could not be found for \(numberSymbol)")
+}
