@@ -89,3 +89,30 @@ case "z":
 default:
     print("It is some char")
 }
+
+let yearsOld = 16
+
+switch yearsOld {
+case 0..<7:
+    print("Child")
+case 7..<17:
+    print("School")
+case 17..<22:
+    print("Student")
+default:
+    print("Worker")
+}
+
+let somePoint = (1, 1)
+switch somePoint {
+case (0, 0):
+    print("\(somePoint) - 0")
+case (_, 0):
+    print("\(somePoint) - x")
+case (0, _):
+    print("\(somePoint) - y")
+case (-2...2, -2...2):
+    print("\(somePoint) - in area")
+default:
+    print("\(somePoint) - inout area")
+}
