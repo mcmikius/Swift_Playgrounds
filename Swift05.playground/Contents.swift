@@ -99,3 +99,35 @@ func greet(person: [String: String]) {
 }
 greet(person: ["name": "John"])
 greet(person: ["name": "Jane", "location": "Cupertino"])
+
+let string = "()()())("
+var checkBracket = 0
+var oneSymbol: Character
+
+for i in 0..<string.count {
+    
+    let index = string.index(string.startIndex, offsetBy: i)
+    oneSymbol = string[index]
+    if oneSymbol == "(" {
+        checkBracket += 1
+    } else {
+        checkBracket -= 1
+    }
+    
+}
+if checkBracket < 0 || checkBracket > 0 {
+    print("последовательность не правильная")
+}
+
+let s = "()[]"
+let pairs: [Character: Character] = ["(": ")", "[": "]", "{": "}"]
+var stack: [Character] = []
+for char in s {
+    if let match = pairs[char] {
+        stack.append(match)
+    } else if stack.last == char {
+        stack.popLast()
+    } else {
+        print("false")
+    }
+}
