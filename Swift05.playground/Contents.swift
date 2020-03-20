@@ -53,3 +53,35 @@ default:
     description += " an integer"
 }
 print(description)
+
+let finalSquare = 25
+var board = [Int](repeating: 0, count: finalSquare + 1)
+board[3] = 8
+board[6] = 11
+board[9] = 9
+board[10] = 2
+board[14] = -10
+board[19] = -11
+board[22] = -2
+board[24] = -8
+
+var square = 0
+var diceRoll = 0
+
+gameLoop: while square != finalSquare {
+    diceRoll += 1
+    if diceRoll == 7 {
+        diceRoll = 1
+    }
+    switch square + diceRoll {
+    case finalSquare:
+        break gameLoop
+    case let newSquare where newSquare > finalSquare:
+        continue gameLoop
+    default:
+        square += diceRoll
+        square += board[square]
+    }
+}
+print("Game over")
+
