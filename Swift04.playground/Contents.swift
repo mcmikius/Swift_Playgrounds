@@ -64,3 +64,17 @@ while square < finalSquare {
     print("square - \(square)")
 }
 print("Game over")
+
+square = 0
+diceRoll = 0
+
+repeat {
+    square += board[square]
+    diceRoll += 1
+    if diceRoll == 7 {
+        diceRoll = 1
+    }
+    square += diceRoll
+    print("square - \(square)")
+} while square < finalSquare
+print("Game over")
