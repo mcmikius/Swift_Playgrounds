@@ -136,3 +136,56 @@ case let (x, y) where x == -y:
 case let (x, y):
     print("x value = \(x) y value = \(y)")
 }
+
+let someCharacter: Character = "e"
+switch someCharacter {
+case "e", "a", "i", "o", "u":
+    print("first")
+case "b", "c", "d", "f", "g":
+    print("second")
+default:
+    print("it is no char")
+}
+
+let stillAnotherPoint = (9, 0)
+switch stillAnotherPoint {
+case (let distance, 0), (0, let distance):
+    print("On some axes from distance - \(distance)")
+default:
+    print("Some where")
+}
+
+
+var yrg = 0.0
+var yr = 10.0
+var kl = 1
+yrg = yr
+while yrg < 2 * yr {
+    yrg = yrg + 0.05 * yrg
+    kl = kl + 1
+}
+print("\(kl)")
+
+
+let max = 100
+
+
+var testValue = 2
+
+let startTime = Date()
+var data = (2...max).map{$0}
+let allocationTime = Date()
+
+
+while (testValue * testValue <= max) {
+    data.removeAll(where: {$0 >= testValue * testValue && $0.isMultiple(of: testValue)})
+    testValue = data.first(where: {$0 > testValue})!
+}
+let overallTime = Date()
+
+
+print("Всего \(data.count) простых чисел: ", data)
+print()
+print("Выделение массива: \(String(format: "%.2f",(allocationTime.timeIntervalSince(startTime)))) с. ")
+print("Вычисления: \(String(format: "%.2f",(overallTime.timeIntervalSince(allocationTime)))) с. ")
+print("Всего: \(String(format: "%.2f",(overallTime.timeIntervalSince(startTime)))) с. ")
