@@ -78,3 +78,14 @@ repeat {
     print("square - \(square)")
 } while square < finalSquare
 print("Game over")
+
+let someChar: Character = "b"
+
+switch someChar {
+case "a":
+    print("It is first char")
+case "z":
+    print("It is end char")
+default:
+    print("It is some char")
+}
