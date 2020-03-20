@@ -102,3 +102,38 @@ for airportName in airports.values {
 
 let airportCodes = [String](airports.keys)
 let airportNames = [String](airports.values)
+
+let a = 26
+let b = 9
+let c = 7
+
+if a < b + c && b < a + c && c < b + c {
+    print("exist")
+} else {
+    print("not exist")
+}
+
+let someArray = [0, 1, -3, 5, -2, -6, 6, 7, 9, 8, 2]
+var sumOfPositiveNumbers = 0
+var sumOFNegativeNumbers = 0
+var qualityOfNegativeNumbers = 0
+for i in someArray {
+    if i >= 0 {
+        sumOfPositiveNumbers = sumOfPositiveNumbers + i
+    } else {
+        sumOFNegativeNumbers = sumOFNegativeNumbers + i
+        qualityOfNegativeNumbers += 1
+    }
+}
+print("sumOfPositiveNumbers \(sumOfPositiveNumbers)")
+print("sumOFNegativeNumbers \(sumOFNegativeNumbers)")
+print("qualityOfNegativeNumbers \(qualityOfNegativeNumbers)")
+
+var minItem = 0
+minItem = someArray[0]
+for i in someArray {
+    if minItem > i {
+        minItem = i
+    }
+}
+print("minItem \(minItem)")
