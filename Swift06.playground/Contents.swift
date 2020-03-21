@@ -181,3 +181,21 @@ if let bounds = minMax(array: [8, -4, 0, 3, 8, 9]) {
 } else {
     print("Array is empty")
 }
+
+func greet(person: String, from hometown: String) -> String {
+    return "Hello \(person)! Glad you could visit from \(hometown)."
+}
+print(greet(person: "Steve", from: "San Francisco"))
+
+func greatPerson(_ person: String) -> String {
+    let greeting = "Hello \(person)"
+    return greeting
+}
+print(greatPerson("Alex"))
+
+func multiply(a: Int, b: Int = 5) -> Int {
+    return a * b
+}
+multiply(a: 5, b: 6)
+multiply(a: 3)
+
