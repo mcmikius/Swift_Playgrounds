@@ -1,14 +1,14 @@
 import UIKit
 
-enum CompassPoint {
+enum CompassPoint: String {
     case north
     case south
     case east
     case west
 }
 
-enum Planet {
-    case mercury, venus, earth, mars, jupiter, saturn, uranus, neptune
+enum Planet: Int {
+    case mercury = 1, venus, earth, mars, jupiter, saturn, uranus, neptune
 }
 
 var directionToHead = CompassPoint.west
@@ -46,3 +46,41 @@ case .qrCode(let productCode):
     print("QR Code: \(productCode)")
 }
 
+enum ASCIIControlCharacter: Character {
+    case tab = "\t"
+    case lineFeed = "\n"
+    case carriageReturn = "\r"
+}
+
+let earthOrder = Planet.earth.rawValue
+let sunsetDirection = CompassPoint.west.rawValue
+let possiblePlanet = Planet.init(rawValue: 7)
+let positionToFind = 11
+if let somePlanet = Planet(rawValue: positionToFind) {
+    print("This planet exists")
+} else {
+    print("This planet \(somePlanet) unexists")
+}
+
+enum ArithmeticExpression {
+    case number(Int)
+    indirect case addition(ArithmeticExpression, ArithmeticExpression)
+    indirect case multiplication(ArithmeticExpression, ArithmeticExpression)
+}
+
+let five = ArithmeticExpression.number(5)
+let four = ArithmeticExpression.number(4)
+let sum = ArithmeticExpression.addition(five, four)
+let product = ArithmeticExpression.multiplication(sum, ArithmeticExpression.number(2))
+
+func evaluate(_ expression: ArithmeticExpression) -> Int {
+    switch expression {
+    case let .number(value):
+        return value
+    case let .addition(left, right):
+        return evaluate(left) + evaluate(right)
+    case let .multiplication(left, right):
+        return evaluate(left) * evaluate(right)
+    }
+}
+print(evaluate(product))
