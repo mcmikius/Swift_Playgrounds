@@ -176,3 +176,20 @@ struct Cuboid {
 }
 let cub = Cuboid(width: 4, height: 5, depth: 2)
 print(cub.volume)
+
+class StepCounter {
+    var totalSteps: Int = 0 {
+        willSet(newTotalSteps) {
+            print("Now value will equil \(newTotalSteps)")
+        }
+        didSet {
+            if totalSteps > oldValue {
+                 print("Added \(totalSteps - oldValue)")
+            }
+        }
+    }
+}
+let stepCounter = StepCounter()
+stepCounter.totalSteps = 200
+stepCounter.totalSteps = 350
+stepCounter.totalSteps = 180
