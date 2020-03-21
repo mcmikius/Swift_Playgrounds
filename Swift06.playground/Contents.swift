@@ -40,3 +40,30 @@ func printWithoutCounting(string: String) {
 
 printAnCount(string: "Hello World")
 printWithoutCounting(string: "Hello world")
+
+var completionHandlers: [() -> Void] = []
+func someFuncWithEscapingClosure(completionHandler: @escaping () -> Void) {
+    completionHandlers.append(completionHandler)
+}
+func someFuncWithoutEscapingClosure(closure: () -> Void) {
+    closure()
+}
+
+class SomeClass {
+    var x = 10
+    func doSomething() {
+        someFuncWithEscapingClosure {
+            self.x = 100
+        }
+        someFuncWithoutEscapingClosure {
+            x = 200
+        }
+    }
+}
+
+let instance = SomeClass()
+instance.doSomething()
+print(instance.x)
+
+completionHandlers.first?()
+print(instance.x)
