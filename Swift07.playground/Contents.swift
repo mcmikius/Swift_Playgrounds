@@ -32,3 +32,17 @@ case .earth:
 default:
     print("It has not life")
 }
+
+enum Barcode {
+    case upc(Int, Int, Int, Int)
+    case qrCode(String)
+}
+var productBarcode = Barcode.upc(8, 85099, 51226, 3)
+//productBarcode = .qrCode("abcdefhi")
+switch productBarcode {
+case .upc(let numberSystem, let manufacturer, let product, let check):
+    print("UPC: \(numberSystem), \(manufacturer), \(product), \(check)")
+case .qrCode(let productCode):
+    print("QR Code: \(productCode)")
+}
+
