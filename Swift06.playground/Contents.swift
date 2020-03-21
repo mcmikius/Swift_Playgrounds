@@ -158,3 +158,26 @@ let strings = numbers.map { (number) -> String in
     return output
 }
 print(strings)
+
+func minMax(array: [Int]) -> (min: Int, max: Int)? {
+    if array.isEmpty {
+        return nil
+    } else {
+        var currentMin = array[0]
+        var currentMax = array[0]
+        for value in array[1..<array.count] {
+            if value < currentMin {
+                currentMin = value
+            } else if value > currentMax {
+                currentMax = value
+            }
+        }
+        return (currentMin, currentMax)
+    }
+}
+
+if let bounds = minMax(array: [8, -4, 0, 3, 8, 9]) {
+    print("Min = \(bounds.min); Max = \(bounds.max)")
+} else {
+    print("Array is empty")
+}
