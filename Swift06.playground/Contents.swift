@@ -109,3 +109,24 @@ func greet(person: String, alreadyGreeted: Bool) -> String {
     }
 }
 print(greet(person: "Tim", alreadyGreeted: false))
+
+var customersInLine = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+print(customersInLine.count)
+let customerProvider = {
+    customersInLine.remove(at: 0)
+}
+print(customersInLine.count)
+print("Now serving \(customerProvider())!")
+print(customersInLine.count)
+
+func serve(customer customerProvider: () -> String) {
+    print("Now serving \(customerProvider())!")
+}
+serve(customer: { customersInLine.remove(at: 0) } )
+print(customersInLine.count)
+
+func serve(customer customerProvider: @autoclosure () -> String) {
+    print("Now serving \(customerProvider())!")
+}
+serve(customer: customersInLine.remove(at: 0))
+print(customersInLine.count)
