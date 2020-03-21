@@ -21,7 +21,7 @@ func printHelloWorld() {
 
 var mathFunction: (Int, Int) -> Int = addTwoInts
 
-print("Resilt - \(mathFunction(2, 3))")
+print("Result - \(mathFunction(2, 3))")
 
 func greetTwo(person: String) {
     print("Hello \(person)")
@@ -41,40 +41,23 @@ func printWithoutCounting(string: String) {
 printAnCount(string: "Hello World")
 printWithoutCounting(string: "Hello world")
 
-var completionHandlers: [() -> Void] = []
-func someFuncWithEscapingClosure(completionHandler: @escaping () -> Void) {
-    completionHandlers.append(completionHandler)
-}
-func someFuncWithoutEscapingClosure(closure: () -> Void) {
-    closure()
+
+
+func stepForward(_ input: Int) -> Int {
+    return input + 1
 }
 
-class SomeClass {
-    var x = 10
-    func doSomething() {
-        someFuncWithEscapingClosure {
-            self.x = 100
-        }
-        someFuncWithoutEscapingClosure {
-            x = 200
-        }
-    }
+func stepBackward(_ input: Int) -> Int {
+    return input - 1
 }
-
-let instance = SomeClass()
-instance.doSomething()
-print(instance.x)
-
-completionHandlers.first?()
-print(instance.x)
 
 func chooseStepFunction(backward: Bool) -> (Int) -> Int {
-    func stepForward(_ input: Int) -> Int {
-        return input + 1
-    }
-    func stepBackward(_ input: Int) -> Int {
-        return input - 1
-    }
+//    func stepForward(_ input: Int) -> Int {
+//        return input + 1
+//    }
+//    func stepBackward(_ input: Int) -> Int {
+//        return input - 1
+//    }
     return backward ? stepBackward : stepForward
 }
 
@@ -217,3 +200,55 @@ var someInt = 3
 var anotherInt = 107
 swapTwoInts(&someInt, &anotherInt)
 print(someInt, anotherInt)
+
+func printMathResult(_ mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int) {
+    print("Result: \(mathFunction(a, b))")
+}
+printMathResult(addTwoInts, 3, 5)
+
+func makeIncrementer(forIncrement amount: Int) -> () -> Int {
+    var runningTotal = 0
+    func incrementer() -> Int {
+        runningTotal += amount
+        return runningTotal
+    }
+    return incrementer
+}
+
+let incrementerByTen = makeIncrementer(forIncrement: 10)
+incrementerByTen()
+incrementerByTen()
+let incrementerBySeven = makeIncrementer(forIncrement: 7)
+incrementerBySeven()
+
+incrementerByTen()
+
+let alsoIncrementByTen = incrementerByTen
+alsoIncrementByTen()
+
+var completionHandlers: [() -> Void] = []
+func someFuncWithEscapingClosure(completionHandler: @escaping () -> Void) {
+    completionHandlers.append(completionHandler)
+}
+func someFuncWithoutEscapingClosure(closure: () -> Void) {
+    closure()
+}
+
+class SomeClass {
+    var x = 10
+    func doSomething() {
+        someFuncWithEscapingClosure {
+            self.x = 100
+        }
+        someFuncWithoutEscapingClosure {
+            x = 200
+        }
+    }
+}
+
+let instance = SomeClass()
+instance.doSomething()
+print(instance.x)
+
+completionHandlers.first?()
+print(instance.x)
