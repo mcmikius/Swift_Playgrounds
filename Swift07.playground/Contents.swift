@@ -440,3 +440,34 @@ tandem.currentNumberOfPassengers = 2
 tandem.currentSpeed = 22.0
 print("Tandem: \(tandem.description)")
 
+class Train: Vehicle {
+    override func makeNoise() {
+        print("Tok - tok")
+    }
+}
+let train = Train()
+train.makeNoise()
+
+class Car: Vehicle {
+    var gear = 1
+    override var description: String {
+        return super.description + " with gear - \(gear)"
+    }
+}
+let car = Car()
+car.currentSpeed = 25.0
+car.gear = 3
+print("Car: \(car.description)")
+
+final class AutomaticCar: Car {
+    override var currentSpeed: Double {
+        didSet {
+            gear = Int(currentSpeed / 10) + 1
+            
+        }
+    }
+}
+let automaticCar = AutomaticCar()
+automaticCar.currentSpeed = 35.0
+print("Car with auto gear: \(automaticCar.description)")
+
