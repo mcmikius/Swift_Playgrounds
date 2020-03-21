@@ -84,3 +84,36 @@ func evaluate(_ expression: ArithmeticExpression) -> Int {
     }
 }
 print(evaluate(product))
+
+struct Resolution {
+    var width = 0
+    var height = 0
+}
+
+class VideoMode {
+    var resolution = Resolution()
+    var interlaced = false
+    var frameRate = 0.0
+    var name: String?
+}
+
+let hd = Resolution(width: 1920, height: 1080)
+var cinema = hd
+cinema.width = 2048
+print("HD: \(hd.width)")
+print("Cinema: \(cinema.width)")
+var curDirection = CompassPoint.west
+let rememberDirection = curDirection
+curDirection = .east
+print(rememberDirection.rawValue)
+print(curDirection.rawValue)
+
+let tenEighty = VideoMode()
+tenEighty.resolution = hd
+tenEighty.interlaced = true
+tenEighty.name = "1080i"
+tenEighty.frameRate = 25.0
+let alsoTenEighty = tenEighty
+alsoTenEighty.frameRate = 30.0
+
+print("Frame rate: \(tenEighty.frameRate)")
