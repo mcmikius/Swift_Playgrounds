@@ -199,3 +199,11 @@ func multiply(a: Int, b: Int = 5) -> Int {
 multiply(a: 5, b: 6)
 multiply(a: 3)
 
+func arithmeticMean(_ numbers: Double...) -> Double {
+    var total: Double = 0
+    for number in numbers {
+        total += number
+    }
+    return total / Double(numbers.count)
+}
+arithmeticMean(1, 2, 3, 4, 5)
