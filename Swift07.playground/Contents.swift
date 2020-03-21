@@ -193,3 +193,86 @@ let stepCounter = StepCounter()
 stepCounter.totalSteps = 200
 stepCounter.totalSteps = 350
 stepCounter.totalSteps = 180
+
+struct SomeStructure {
+    static var storedTypeProperty = "Some value."
+    static var computedTypeProperty: Int {
+        return 1
+    }
+}
+enum SomeEnumeration {
+    static var storedTypeProperty = "Some value."
+    static var computedTypeProperty: Int {
+        return 6
+    }
+}
+class SomeClass {
+    static var storedTypeProperty = "Some value."
+    static var computedTypeProperty: Int {
+        return 26
+    }
+    class var overrideableComputedTypeProperty: Int {
+        return 107
+    }
+}
+
+print(SomeStructure.storedTypeProperty)
+SomeStructure.storedTypeProperty = "Another value"
+print(SomeStructure.storedTypeProperty)
+
+struct AudioChannel {
+    static let thresholdLevel = 10
+    static var maxInputLevelForAllChannel = 0
+    var currentLevel: Int = 0 {
+        didSet {
+            if currentLevel > AudioChannel.thresholdLevel {
+                currentLevel = AudioChannel.thresholdLevel
+            }
+            if currentLevel > AudioChannel.maxInputLevelForAllChannel {
+                AudioChannel.maxInputLevelForAllChannel = currentLevel
+            }
+        }
+    }
+}
+var leftChannel = AudioChannel()
+var rightChannel = AudioChannel()
+leftChannel.currentLevel = 7
+print(leftChannel.currentLevel)
+print(AudioChannel.maxInputLevelForAllChannel)
+rightChannel.currentLevel = 11
+print(rightChannel.currentLevel)
+print(AudioChannel.maxInputLevelForAllChannel)
+
+class Counter {
+    var count = 0
+    func increment() {
+        count += 1
+    }
+    func increment(by amount: Int) {
+        count += amount
+    }
+    func reset() {
+        count = 0
+    }
+}
+
+let counter = Counter()
+
+counter.increment()
+counter.count
+counter.increment(by: 5)
+counter.count
+counter.reset()
+counter.count
+
+struct PointTwo {
+    var x = 0.0
+    var y = 0.0
+    func isTpTheRightOf(x: Double) -> Bool {
+        return self.x > x
+    }
+}
+let somePointTwo = PointTwo(x: 4.0, y: 5.0)
+if somePointTwo.isTpTheRightOf(x: 1.0) {
+    print("This point is right from line where x = 1.0")
+}
