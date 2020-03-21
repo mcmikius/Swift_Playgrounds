@@ -207,3 +207,13 @@ func arithmeticMean(_ numbers: Double...) -> Double {
     return total / Double(numbers.count)
 }
 arithmeticMean(1, 2, 3, 4, 5)
+
+func swapTwoInts(_ a: inout Int, _ b: inout Int) {
+    let tempA = a
+    a = b
+    b = tempA
+}
+var someInt = 3
+var anotherInt = 107
+swapTwoInts(&someInt, &anotherInt)
+print(someInt, anotherInt)
