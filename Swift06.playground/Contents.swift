@@ -86,3 +86,26 @@ while currentValue != 0 {
     currentValue = moveNearerToZero(currentValue)
 }
 print("ZERO!")
+
+
+func sayHelloWorld() -> String {
+    return "Hello world!"
+}
+print(sayHelloWorld())
+
+func greetAgain(person: String) -> String {
+    let greeting = "Hello again, \(person)!"
+    return greeting
+}
+func greetThree(person: String) -> String {
+    let greeting = "Hello \(person)"
+    return greeting
+}
+func greet(person: String, alreadyGreeted: Bool) -> String {
+    if alreadyGreeted {
+        return greetAgain(person: person)
+    } else {
+        return greetThree(person: person)
+    }
+}
+print(greet(person: "Tim", alreadyGreeted: false))
