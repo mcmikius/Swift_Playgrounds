@@ -22,3 +22,21 @@ func printHelloWorld() {
 var mathFunction: (Int, Int) -> Int = addTwoInts
 
 print("Resilt - \(mathFunction(2, 3))")
+
+func greetTwo(person: String) {
+    print("Hello \(person)")
+}
+
+greetTwo(person: "Dave")
+
+func printAnCount(string: String) -> Int {
+    print(string)
+    return string.count
+}
+
+func printWithoutCounting(string: String) {
+    let _ = printAnCount(string: string)
+}
+
+printAnCount(string: "Hello World")
+printWithoutCounting(string: "Hello world")
