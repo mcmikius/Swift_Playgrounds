@@ -291,3 +291,18 @@ class UntitledDocument: Document {
     }
 }
 
+class SomeClass {
+    required init() {
+        
+    }
+}
+class SomeSubclass: SomeClass {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+    
+    required init() {
+        self.name = "XXX"
+    }
+}
