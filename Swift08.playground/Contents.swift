@@ -225,3 +225,37 @@ let unknownUnitTwo = TemperatureUnitTwo(rawValue: "K")
 if unknownUnitTwo == nil {
     print("It is temperature unit undefine")
 }
+
+class Product {
+    let name: String
+    init?(name: String) {
+        if name.isEmpty {
+            return nil
+        }
+        self.name = name
+    }
+}
+
+class CartItem: Product {
+    let quantity: Int
+    init?(name: String, quantity: Int) {
+        if quantity < 1 {
+            return nil
+        }
+        self.quantity = quantity
+        super.init(name: name)
+    }
+}
+if let twoSocks = CartItem(name: "Socks", quantity: 2) {
+    print("Think: \(twoSocks.name), quantity: \(twoSocks.quantity)")
+}
+if let zeroShirts = CartItem(name: "Shirt", quantity: 0) {
+    print("Think: \(zeroShirts.name), quantity: \(zeroShirts.quantity)")
+} else {
+    print("Nothing")
+}
+if let oneUnnamed = CartItem(name: "", quantity: 1) {
+    print("Think: \(oneUnnamed.name), quantity: \(oneUnnamed.quantity)")
+} else {
+    print("Nothing")
+}
