@@ -165,7 +165,7 @@ for item in breakfastList {
 
 let mayBeNumber = "123"
 if let number = Int(mayBeNumber) {
-    print("\(mayBeNumber) is number")
+    print("\(number) is number")
 } else {
     print("\(mayBeNumber) is not number")
 }
@@ -186,4 +186,42 @@ if let giraffe = someCreature {
 let anonymousCreature = Animal(species: "")
 if anonymousCreature == nil {
     print("No init animal")
+}
+enum TemperatureUnit {
+    case kelvin
+    case celsius
+    case fahrenheit
+    init?(symbol: Character) {
+        switch symbol {
+        case "K":
+            self = .kelvin
+        case "C":
+            self = .celsius
+        case "F":
+            self = .fahrenheit
+        default:
+            return nil
+        }
+    }
+}
+let fahrenheitUnit = TemperatureUnit(symbol: "F")
+if fahrenheitUnit != nil {
+    print("It is temperature unit define")
+}
+let unknownUnit = TemperatureUnit(symbol: "X")
+if unknownUnit == nil {
+    print("It is temperature unit undefine")
+}
+enum TemperatureUnitTwo: Character {
+    case kelvin = "K"
+    case celsius = "C"
+    case fahrenheit = "F"
+}
+let fahrenheitUnitTwo = TemperatureUnitTwo(rawValue: "K")
+if fahrenheitUnitTwo != nil {
+    print("It is temperature unit define")
+}
+let unknownUnitTwo = TemperatureUnitTwo(rawValue: "K")
+if unknownUnitTwo == nil {
+    print("It is temperature unit undefine")
 }
