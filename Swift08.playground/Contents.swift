@@ -163,3 +163,27 @@ for item in breakfastList {
     print(item.description)
 }
 
+let mayBeNumber = "123"
+if let number = Int(mayBeNumber) {
+    print("\(mayBeNumber) is number")
+} else {
+    print("\(mayBeNumber) is not number")
+}
+
+struct Animal {
+    let species: String
+    init?(species: String) {
+        if species.isEmpty {
+            return nil
+        }
+        self.species = species
+    }
+}
+let someCreature = Animal(species: "Giraffe")
+if let giraffe = someCreature {
+    print("It is - \(giraffe.species)")
+}
+let anonymousCreature = Animal(species: "")
+if anonymousCreature == nil {
+    print("No init animal")
+}
