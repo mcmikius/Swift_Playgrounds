@@ -43,3 +43,16 @@ struct Color {
 let magenta = Color(red: 1.0, green: 0.0, blue: 1.0)
 let halfGrey = Color(white: 0.5)
 
+class SurveyQuestion {
+    let text: String
+    var response: String?
+    init(text: String) {
+        self.text = text
+    }
+    func ask() {
+        print(text)
+    }
+}
+let cheeseQuestion = SurveyQuestion(text: "Do you like cheese?")
+cheeseQuestion.ask()
+cheeseQuestion.response = "Yes, I like it"
