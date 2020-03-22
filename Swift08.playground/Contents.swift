@@ -335,3 +335,34 @@ let board = Chessboard()
 print(board.squareIsBlackAt(row: 0, column: 1))
 print(board.squareIsBlackAt(row: 7, column: 7))
 
+class Bank {
+    static var coinsInBank = 10000
+    static func distribute(coins numberOfCoinsRequsted: Int) -> Int {
+        let numberOfCoinsToVend = min(numberOfCoinsRequsted, coinsInBank)
+        coinsInBank -= numberOfCoinsToVend
+        return numberOfCoinsToVend
+    }
+    static func receive(coins: Int) {
+        coinsInBank += coins
+    }
+}
+
+class Player {
+    var coinsInPurse: Int
+    init(coins: Int) {
+        coinsInPurse = Bank.distribute(coins: coins)
+    }
+    func win(coins: Int) {
+        coinsInPurse += Bank.distribute(coins: coins)
+    }
+    deinit {
+        Bank.receive(coins: coinsInPurse)
+    }
+}
+
+var playerOne: Player? = Player(coins: 100)
+print("New player starts with \(playerOne!.coinsInPurse)")
+print("Now in the bank \(Bank.coinsInBank)")
+playerOne = nil
+print("Player gameover")
+print("Now in the bank \(Bank.coinsInBank)")
