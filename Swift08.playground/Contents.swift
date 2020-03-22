@@ -306,3 +306,32 @@ class SomeSubclass: SomeClass {
         self.name = "XXX"
     }
 }
+
+//class SomeNewClass {
+//    let someProperty: SomeType = {
+//        return someValue
+//    }()
+//}
+
+struct Chessboard {
+    let boardColors: [Bool] = {
+        var tempBoard = [Bool]()
+        var isBlack = false
+        for i in 1...8 {
+            for j in 1...8 {
+                tempBoard.append(isBlack)
+                isBlack = !isBlack
+            }
+            isBlack = !isBlack
+        }
+        return tempBoard
+    }()
+    func squareIsBlackAt(row: Int, column: Int) -> Bool {
+        return boardColors[(row * 8) + column]
+    }
+}
+
+let board = Chessboard()
+print(board.squareIsBlackAt(row: 0, column: 1))
+print(board.squareIsBlackAt(row: 7, column: 7))
+
