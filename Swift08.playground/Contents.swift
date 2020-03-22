@@ -92,3 +92,74 @@ struct Rect {
 let originRect = Rect(origin: Point(x: 2.0, y: 2.0), size: Size(width: 5.0, height: 5.0))
 let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, height: 3.0))
 let basicRect = Rect()
+
+class Vehicle {
+    var numberOfWheels = 0
+    var description: String {
+        return "\(numberOfWheels) wheels"
+    }
+}
+let vehicle = Vehicle()
+print("Vehicle has \(vehicle.description)")
+
+class Bicycle: Vehicle {
+    override init() {
+        super.init()
+        numberOfWheels = 2
+    }
+}
+let bicycle = Bicycle()
+print("Bicycle has \(bicycle.description)")
+
+class Food {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+    convenience init() {
+        self.init(name: "[Without name]")
+    }
+}
+let namedMeat = Food(name: "Beacon")
+namedMeat.name
+let mysteryMeat = Food()
+mysteryMeat.name
+
+class RecipeIngredient: Food {
+    var quantity: Int
+    init(name: String, quantity: Int) {
+        self.quantity = quantity
+        super.init(name: name)
+    }
+    override convenience init(name: String) {
+        self.init(name: name, quantity: 1)
+    }
+}
+
+let oneMysteryItem = RecipeIngredient()
+oneMysteryItem.name
+let oneBeacon = RecipeIngredient(name: "Beacon")
+oneBeacon.name
+oneBeacon.quantity
+let sixEggs = RecipeIngredient(name: "Eggs", quantity: 6)
+sixEggs.name
+sixEggs.quantity
+
+class ShoppingListItem: RecipeIngredient {
+    var purchased = false
+    var description: String {
+        var output = "\(quantity) x \(name)"
+        output += purchased ? "✔︎" : "✕"
+        return output
+    }
+}
+
+var breakfastList = [
+    ShoppingListItem(), ShoppingListItem(name: "Beacon"), ShoppingListItem(name: "SixEggs", quantity: 6)
+]
+breakfastList[0].name = "Juice"
+breakfastList[0].purchased = true
+for item in breakfastList {
+    print(item.description)
+}
+
