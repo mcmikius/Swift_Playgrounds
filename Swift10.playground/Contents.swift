@@ -155,3 +155,91 @@ if let roomCount = johnTwo.residence?.numberOfRooms {
 } else {
     print("nil")
 }
+
+class PersonFour {
+    var residence: ResidenceTwo?
+}
+class ResidenceTwo {
+    var rooms = [Room]()
+    var numberOfRooms: Int {
+        return rooms.count
+    }
+    subscript(i: Int) -> Room {
+        get {
+            return rooms[i]
+        }
+        set {
+            rooms[i] = newValue
+        }
+    }
+    func printNumberOfRooms() {
+        print("Total \(numberOfRooms)")
+    }
+    var address: Address?
+}
+
+class Room {
+    let name: String
+    init(name: String) {
+        self.name = name
+    }
+}
+
+class Address {
+    var buildingName: String?
+    var buildingNumber: String?
+    var street: String?
+    func buildingIdentifier() -> String? {
+        if let buildingNumber = buildingNumber, let street = street {
+            return "\(buildingNumber) \(street)"
+        } else if buildingName != nil {
+            return buildingName
+        } else {
+            return nil
+        }
+    }
+
+}
+
+let johnThree = PersonFour()
+let someAddress = Address()
+someAddress.buildingNumber = "29"
+someAddress.street = "Wall street"
+johnThree.residence?.address = someAddress
+
+
+func createAddress() -> Address {
+    print("Func called")
+    let someAddress = Address()
+    someAddress.buildingNumber = "29"
+    someAddress.street = "Wall street"
+    return someAddress
+}
+johnThree.residence?.address = createAddress()
+if johnThree.residence?.printNumberOfRooms() != nil {
+    print("Possible print total rooms count")
+} else {
+    print("Unpossible print total rooms count")
+}
+
+if (johnThree.residence?.address = someAddress) != nil {
+    print("Possible set up address")
+} else {
+    print("Unpossible set up address")
+}
+
+if let firstRoomName = johnThree.residence?[0].name {
+    print("\(firstRoomName)")
+} else {
+    print("No get first room name")
+}
+johnThree.residence?[0] = Room(name: "bedroom")
+let johnHouse = ResidenceTwo()
+johnHouse.rooms.append(Room(name: "TV room"))
+johnHouse.rooms.append(Room(name: "Kitchen"))
+johnThree.residence = johnHouse
+if let firstRoomName = johnThree.residence?[0].name {
+    print("\(firstRoomName)")
+} else {
+    print("No get first room name")
+}
