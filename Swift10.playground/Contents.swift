@@ -55,4 +55,30 @@ unit4a?.tenant = john
 john = nil
 unit4a = nil
 
+class Customer {
+    let name: String
+    var card: CreditCard?
+    init(name: String) {
+        self.name = name
+    }
+    deinit {
+        print("\(name) deinit")
+    }
+}
 
+class CreditCard {
+    let number: UInt64
+    unowned let customer: Customer
+    init(number: UInt64, customer: Customer) {
+        self.number = number
+        self.customer = customer
+    }
+    deinit {
+        print("\(number) deinit")
+    }
+}
+
+var johnApple: Customer?
+johnApple = Customer(name: "John Appleseed")
+johnApple?.card = CreditCard(number: 1234567812345678, customer: johnApple!)
+johnApple = nil
