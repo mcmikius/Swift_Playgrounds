@@ -61,3 +61,32 @@ do {
 } catch VendingMachineError.insufficientFunds(let coinsNeeded) {
     print("Insufficient Funds add \(coinsNeeded) coins")
 }
+
+func someThrowingFunc() throws -> Int {
+    return 0
+}
+
+let x = try? someThrowingFunc()
+
+let y: Int?
+do {
+    y = try someThrowingFunc()
+} catch {
+    y = nil
+}
+
+//let photo = try! loadImage(atPath: "./Resourse/John.jpg")
+
+//func processFile(fileName: String) throws {
+//    if exists(fileName) {
+//        let file = open(fileName)
+//        defer {
+//            close(file)
+//        }
+//    }
+//    while let line = try file.readline() {
+//
+//    }
+//     close(file)
+//}
+
