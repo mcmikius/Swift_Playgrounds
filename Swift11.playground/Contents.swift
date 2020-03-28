@@ -49,3 +49,15 @@ func buyFavoriteSnack(person: String, vendingMachine: VendingMachine) throws {
     let snackName = favoriteSnacks[person] ?? "Candy Bar"
     try vendingMachine.vend(itemNamed: snackName)
 }
+
+var vendingMachine = VendingMachine()
+vendingMachine.coinDeposited = 10
+do {
+    try buyFavoriteSnack(person: "Eve", vendingMachine: vendingMachine)
+} catch VendingMachineError.invalidSelection {
+    print("Invalid selection")
+} catch VendingMachineError.outOfStock {
+    print("Out of stock")
+} catch VendingMachineError.insufficientFunds(let coinsNeeded) {
+    print("Insufficient Funds add \(coinsNeeded) coins")
+}
