@@ -62,3 +62,50 @@ extension Int {
 
 var someInt = 3
 someInt.square()
+
+extension Int {
+    subscript(digitIndex: Int) -> Int {
+        var decimalBase = 1
+        for _ in 0..<digitIndex {
+            decimalBase *= 10
+        }
+        return (self / decimalBase) % 10
+    }
+}
+
+746381295[0]
+746381295[1]
+746381295[2]
+746381295[9]
+
+extension Int {
+    enum Kind {
+        case negative, zero, positive
+    }
+    var kind: Kind {
+        switch self {
+        case 0:
+            return .zero
+        case let x where x > 0:
+            return .positive
+        default:
+            return .negative
+        }
+    }
+}
+
+func printIntegerKinds(_ numbers: [Int]) {
+    for number in numbers {
+        switch number.kind {
+        case .negative:
+            print("- ", terminator: "")
+        case .zero:
+        print("0 ", terminator: "")
+            case .positive:
+            print("+ ", terminator: "")
+        }
+    }
+    print("")
+}
+
+printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
