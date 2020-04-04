@@ -42,3 +42,23 @@ extension Rect {
 
 let centerRect = Rect(center: Point(x: 4.0, y: 4.0), size: Size(width: 3.0, height: 3.0))
 
+extension Int {
+    func repetitions(task: () -> Void) {
+        for _ in 0..<self {
+            task()
+        }
+    }
+}
+
+3.repetitions {
+    print("Hello")
+}
+
+extension Int {
+    mutating func square() {
+        self = self * self
+    }
+}
+
+var someInt = 3
+someInt.square()
