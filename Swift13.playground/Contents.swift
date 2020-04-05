@@ -182,3 +182,106 @@ let tracker = DiceGameTracker()
 let game = SnakesAndLadders()
 game.delegate = tracker
 game.play()
+
+protocol TextRepresentable {
+    func textualDescription() -> String
+}
+
+extension Dice: TextRepresentable {
+    func textualDescription() -> String {
+        return "Dice has \(sides) sides"
+    }
+}
+
+let d10 = Dice(sides: 10, generator: LinearCongruentialGenerator())
+print(d10.textualDescription())
+
+extension SnakesAndLadders: TextRepresentable {
+    func textualDescription() -> String {
+        return "Game Snakes and Ladders with \(finalSquare) squares"
+    }
+}
+print(game.textualDescription())
+
+struct Hamster {
+    var name: String
+    func textualDescription() -> String {
+        return "Hamster names \(name)"
+    }
+}
+extension Hamster: TextRepresentable {}
+
+let simonTheHamster = Hamster(name: "Simon")
+let somethingTextRepresentable: TextRepresentable = simonTheHamster
+print(somethingTextRepresentable.textualDescription())
+
+let things: [TextRepresentable] = [game, d10, simonTheHamster]
+for thing in things {
+    print(thing.textualDescription())
+}
+
+protocol PrettyTextRepresentable: TextRepresentable {
+    var prettyTextualDescription: String { get }
+}
+
+extension SnakesAndLadders: PrettyTextRepresentable {
+    var prettyTextualDescription: String {
+        var output = textualDescription() + ":\n"
+        for index in 1...finalSquare {
+            switch board[index] {
+            case let ladder where ladder > 0:
+                output += "👆 "
+                case let snake where snake < 0:
+                output += "👇 "
+            default:
+                output += "0 "
+            }
+        }
+        return output
+    }
+}
+
+print(game.prettyTextualDescription)
+
+protocol Named {
+    var name: String { get }
+}
+
+protocol Aged {
+    var age: Int { get }
+}
+
+struct VipPersone: Named, Aged {
+    var name: String
+    
+    var age: Int
+}
+
+func wishHappyBirthday(to celebrator: Named & Aged) {
+    print("Happy Birthday, \(celebrator.name) you \(celebrator.age)")
+}
+
+let birthdayPerson = VipPersone(name: "Sasha", age: 21)
+wishHappyBirthday(to: birthdayPerson)
+
+class Location {
+    var latitude: Double
+    var longitude: Double
+    init(latitude: Double, longitude: Double) {
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+}
+class City: Location, Named {
+    var name: String
+    init(name: String, latitude: Double, longitude: Double) {
+        self.name = name
+        super.init(latitude: latitude, longitude: longitude)
+    }
+}
+func beginConcert(in location: Location & Named) {
+    print("Hello, \(location.name)")
+}
+
+let seatle = City(name: "Seatle", latitude: 37.6, longitude: -122.6)
+beginConcert(in: seatle)
