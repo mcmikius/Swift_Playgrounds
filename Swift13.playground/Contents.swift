@@ -1,3 +1,4 @@
+import Foundation
 
 protocol SomeProtocol {
     var mustBeSettable: Int { get set }
@@ -231,7 +232,7 @@ extension SnakesAndLadders: PrettyTextRepresentable {
             switch board[index] {
             case let ladder where ladder > 0:
                 output += "👆 "
-                case let snake where snake < 0:
+            case let snake where snake < 0:
                 output += "👇 "
             default:
                 output += "0 "
@@ -285,3 +286,123 @@ func beginConcert(in location: Location & Named) {
 
 let seatle = City(name: "Seatle", latitude: 37.6, longitude: -122.6)
 beginConcert(in: seatle)
+
+protocol HasArea {
+    var area: Double { get }
+}
+
+class Circle: HasArea {
+    let pi = 3.1415927
+    var radius: Double
+    var area: Double { return pi * radius * radius}
+    init(radius: Double) {
+        self.radius = radius
+    }
+}
+
+class Country: HasArea {
+    var area: Double
+    init(area: Double) {
+        self.area = area
+    }
+}
+
+class Animal {
+    var legs: Int
+    init(legs: Int) {
+        self.legs = legs
+    }
+}
+
+let objects: [AnyObject] = [
+    Circle(radius: 2.0),
+    Country(area: 243610),
+    Animal(legs: 4)
+]
+
+for object in objects {
+    if let objectWithArea = object as? HasArea {
+        print("Area equal \(objectWithArea.area)")
+    } else {
+        print("It is no has area")
+    }
+}
+
+
+@objc protocol CounterDataSource {
+    @objc optional func increment(forCount count: Int) -> Int
+    @objc optional var fixedIncrement: Int { get }
+}
+
+class Counter {
+    var count = 0
+    var dataSource: CounterDataSource?
+    func increment() {
+        if let amount = dataSource?.increment?(forCount: count) {
+            count += amount
+        } else if let amount = dataSource? .fixedIncrement {
+            count += amount
+        }
+    }
+}
+
+class ThreeSourse: NSObject, CounterDataSource {
+    let fixedIncrement: Int = 3
+}
+var counter = Counter()
+
+counter.dataSource = ThreeSourse()
+
+for _ in 1...4 {
+    counter.increment()
+    print(counter.count)
+}
+
+class TowardsZeroSource: NSObject, CounterDataSource {
+    func increment(forCount count: Int) -> Int {
+        if count == 0 {
+            return 0
+        } else if count < 0 {
+            return 1
+        } else {
+            return -1
+        }
+    }
+}
+
+counter.count = -4
+counter.dataSource = TowardsZeroSource()
+
+for _ in 1...5 {
+    counter.increment()
+    print(counter.count)
+}
+
+extension RandomNumberGenerator {
+    func randomBool() -> Bool {
+        return random() > 0.5
+    }
+}
+
+let generatorBool = LinearCongruentialGenerator()
+print("Random number: \(generatorBool.random())")
+print("Random bool value: \(generatorBool.randomBool())")
+
+extension PrettyTextRepresentable {
+    var prettyTextualDescription: String {
+        return textualDescription()
+    }
+}
+
+extension Collection where Iterator.Element: TextRepresentable {
+    func textualDescription() -> String {
+        let itemsAsText = self.map { $0.textualDescription() }
+        return "[" + itemsAsText.joined(separator: ", ") + "]"
+    }
+}
+
+let murrayTheHamster = Hamster(name: "Murray")
+let morganTheHamster = Hamster(name: "Morgan")
+let mauriceTheHamster = Hamster(name: "Maurice")
+let hamsters = [murrayTheHamster, mauriceTheHamster, morganTheHamster]
+print(hamsters.textualDescription())
