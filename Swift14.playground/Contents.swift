@@ -34,7 +34,29 @@ var anotherNewInt = 107
 swapTwoValues(&someNewInt, &anotherNewInt)
 print("someInt = \(someNewInt); anotherInt = \(anotherNewInt)")
 
-struct IntStack {
+
+protocol Container {
+    associatedtype Item
+    mutating func append(_ item: Item)
+    var count: Int { get }
+    subscript(i: Int) -> Item { get }
+}
+
+struct IntStack: Container {
+    mutating func append(_ item: Int) {
+        self.push(item)
+    }
+    
+    var count: Int {
+        return items.count
+    }
+    
+    subscript(i: Int) -> Int {
+        return items[i]
+    }
+    
+    typealias Item = Int
+    
     var items = [Int]()
     mutating func push(_ item: Int) {
         items.append(item)
@@ -44,7 +66,8 @@ struct IntStack {
     }
 }
 
-struct Stack<Element> {
+struct Stack<Element>: Container {
+    
     var items = [Element]()
     mutating func push(_ item: Element) {
         items.append(item)
@@ -52,7 +75,20 @@ struct Stack<Element> {
     mutating func pop() -> Element {
         return items.removeLast()
     }
+    mutating func append(_ item: Element) {
+        self.push(item)
+    }
+    
+    var count: Int {
+        return items.count
+    }
+    
+    subscript(i: Int) -> Element {
+        return items[i]
+    }
 }
+
+extension Array: Container {}
 
 var stackOfString = Stack<String>()
 stackOfString.push("uno")
@@ -74,7 +110,7 @@ if let topItem = stackOfString.topItem {
     print("Top item - \(topItem)")
 }
 
-func findIndex(ofString valueToFind: String, in array: [String]) -> Int? {
+func findIndex<T: Equatable>(ofString valueToFind: T, in array: [T]) -> Int? {
     for (index, value) in array.enumerated() {
         if value == valueToFind {
             return index
@@ -87,4 +123,8 @@ let strings = ["cat", "dog", "llama", "parakeet", "terrapin"]
 if let foundIndex = findIndex(ofString: "llama", in: strings) {
     print("Llama's index - \(foundIndex)")
 }
+
+let doubleIndex = findIndex(ofString: 9.3, in: [3.1415, 0.1, 0.25])
+let intIndex = findIndex(ofString: 2, in: [1, 2, 3])
+
 
