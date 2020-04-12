@@ -66,10 +66,25 @@ print(fromTheTop)
 
 extension Stack {
     var topItem: Element? {
-        return (items.isEmpty ? nil : items[items.count - 1])
+        return items.isEmpty ? nil : items[items.count - 1]
     }
 }
 
 if let topItem = stackOfString.topItem {
     print("Top item - \(topItem)")
 }
+
+func findIndex(ofString valueToFind: String, in array: [String]) -> Int? {
+    for (index, value) in array.enumerated() {
+        if value == valueToFind {
+            return index
+        }
+    }
+    return nil
+}
+
+let strings = ["cat", "dog", "llama", "parakeet", "terrapin"]
+if let foundIndex = findIndex(ofString: "llama", in: strings) {
+    print("Llama's index - \(foundIndex)")
+}
+
