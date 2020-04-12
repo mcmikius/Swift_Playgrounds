@@ -33,3 +33,33 @@ var someNewInt = 3
 var anotherNewInt = 107
 swapTwoValues(&someNewInt, &anotherNewInt)
 print("someInt = \(someNewInt); anotherInt = \(anotherNewInt)")
+
+struct IntStack {
+    var items = [Int]()
+    mutating func push(_ item: Int) {
+        items.append(item)
+    }
+    mutating func pop() -> Int {
+        return items.removeLast()
+    }
+}
+
+struct Stack<Element> {
+    var items = [Element]()
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+}
+
+var stackOfString = Stack<String>()
+stackOfString.push("uno")
+stackOfString.push("dos")
+stackOfString.push("tres")
+stackOfString.push("cuatro")
+print(stackOfString)
+let fromTheTop = stackOfString.pop()
+print(stackOfString)
+print(fromTheTop)
