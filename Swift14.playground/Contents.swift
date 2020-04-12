@@ -63,3 +63,13 @@ print(stackOfString)
 let fromTheTop = stackOfString.pop()
 print(stackOfString)
 print(fromTheTop)
+
+extension Stack {
+    var topItem: Element? {
+        return (items.isEmpty ? nil : items[items.count - 1])
+    }
+}
+
+if let topItem = stackOfString.topItem {
+    print("Top item - \(topItem)")
+}
