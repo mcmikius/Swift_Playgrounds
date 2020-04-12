@@ -127,4 +127,22 @@ if let foundIndex = findIndex(ofString: "llama", in: strings) {
 let doubleIndex = findIndex(ofString: 9.3, in: [3.1415, 0.1, 0.25])
 let intIndex = findIndex(ofString: 2, in: [1, 2, 3])
 
+func allItemsMatch<C1: Container, C2: Container>(_ someContainer: C1, _ anotherContainer: C2) -> Bool
+    where C1.Item == C2.Item, C1.Item: Equatable {
+        if someContainer.count != anotherContainer.count {
+            return false
+        }
+        for i in 0..<someContainer.count {
+            if someContainer[i] != anotherContainer[i] {
+                return false
+            }
+        }
+        return true
+}
 
+var arrayOfString = ["uno", "dos", "tres"]
+if allItemsMatch(stackOfString, arrayOfString) {
+    print("All items match")
+} else {
+    print("not match")
+}
