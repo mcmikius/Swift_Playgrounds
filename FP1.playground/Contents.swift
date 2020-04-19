@@ -138,3 +138,38 @@ let anotherStudent = student
 julie.name = "Julie Jr."
 anotherStudent.user.name
 
+let juliya = User(name: "Juliya")
+let steve = User(name: "Steve")
+let alain = User(name: "Alain")
+let users = [alain, julie, steve]
+
+let copyOfUsers = users
+users[0].name = "Jean-Marc"
+print(users[0].name)
+print(copyOfUsers[0].name)
+
+class Manager: NSObject, NSCopying {
+    var firstName: String
+    var lastName: String
+    var age: Int
+
+    init(firstName: String, lastName: String, age: Int) {
+        self.firstName = firstName
+        self.lastName = lastName
+        self.age = age
+    }
+
+    func copy(with: NSZone? = nil) -> Any {
+        let copy = Manager(firstName: firstName, lastName: lastName,
+        age: age)
+        return copy
+    }
+}
+
+let john = Manager(firstName: "John", lastName: "Doe", age: 35)
+let jane = john.copy() as! Manager
+jane.firstName = "Jane"
+jane.lastName = "Doe"
+jane.age = 40
+print("\(john.firstName) \(john.lastName) is \(john.age)")
+print("\(jane.firstName) \(jane.lastName) is \(jane.age)")
