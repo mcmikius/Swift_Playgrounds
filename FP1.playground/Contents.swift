@@ -19,3 +19,9 @@ func explicityRetunClosure(firstName: String) -> (String) -> String {
 }
 let fnIncludingFirstName = explicityRetunClosure(firstName: "John")
 let extractedFullName = fnIncludingFirstName("Doe")
+
+func factorial(n: Int) -> Int {
+    return n * factorial(n: n - 1)
+}
+
+print(factorial(n: 5))
