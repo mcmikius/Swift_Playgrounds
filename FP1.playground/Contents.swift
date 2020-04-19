@@ -100,3 +100,41 @@ let powerOf2 = memoize { (pow2, x) in
     x == 0 ? 1 : 2 * pow2(x - 1)
 }
 print(powerOf2(5))
+
+struct OurStruct {
+    var data: Int = 3
+}
+
+var valueA = OurStruct()
+var valueB = valueA
+valueA.data = 5
+print("\(valueA.data), \(valueB.data)")
+
+class OurClass {
+    var data: Int = 3
+}
+
+var referenceA = OurClass()
+var referenceB = referenceA
+referenceA.data = 5
+print("\(referenceA.data), \(referenceB.data)")
+
+class User {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+}
+
+let julie = User(name: "Julie")
+
+struct Student {
+    var user: User
+}
+
+let student = Student(user: julie)
+student.user.name
+let anotherStudent = student
+julie.name = "Julie Jr."
+anotherStudent.user.name
+
